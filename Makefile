@@ -1,7 +1,7 @@
 CC=gcc -g -Wall
 
 # Test source code to compile
-TEST=test_prog.cpp
+TEST=test_prog.c
 
 # List of source files for shell
 SHELL_SOURCES=shell.c
@@ -27,4 +27,4 @@ test: ${TEST}
 	${CC} -c $<
 
 clean:
-	rm -f ${SHELL_OBJS} shell test_prog
+	rm -f ${SHELL_OBJS} shell test

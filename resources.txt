@@ -1,0 +1,21 @@
+# pipes
+========
+* http://www.microhowto.info/howto/capture_the_output_of_a_child_process_in_c.html
+* https://stackoverflow.com/questions/10700982/redirecting-stdout-to-pipe-in-c
+
+
+# exec functions
+================
+* https://linux.die.net/man/3/exec
+* https://linux.die.net/man/3/fexecve
+* https://linux.die.net/man/2/execve
+
+
+# fork
+======
+* http://man7.org/linux/man-pages/man2/fork.2.html
+
+
+# wait
+======
+* http://man7.org/linux/man-pages/man2/waitid.2.html
