@@ -1,6 +1,10 @@
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <sys/wait.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <string.h>
 #include "stdbool.h"
 #include "shell_utils.h"
 
@@ -31,7 +35,8 @@ int main(int argc, char **argv)
 
 		// grab child process pid to wait for its completion
 		pid_t child_pid = fork();
-		if(child_pid == 0)
+
+		if (child_pid == 0)
 		{
 			// child process
 
@@ -42,8 +47,8 @@ int main(int argc, char **argv)
 			
 			bool is_script = true; // TODO: replace w/ parser func call
 
-			char* argv[] = NULL; // TODO: replace w/ parser func call
-			char* envp[] = NULL; // TODO: replace w/ parser func call
+			char* argv[] = {NULL,}; // TODO: replace w/ parser func call
+			char* envp[] = {NULL,}; // TODO: replace w/ parser func call
 
 			if (is_script)
 			{
@@ -53,16 +58,19 @@ int main(int argc, char **argv)
 			else
 			{
 				// programs
-				int file_descriptor = open(program, "r");
+				int file_descriptor = open(program, O_RDONLY);
 				fexecve(file_descriptor, argv, envp);
 			}
+
 		}
 		else
 		{
 			// parent process
 
 			// wait for child to finish
-
+			siginfo_t siginfo;
+			int retval = waitid(P_PID, child_pid, &siginfo, WEXITED);
+			printf("return value: %i\n", retval);
 		}
 	}
 
