@@ -27,4 +27,4 @@ test: ${TEST}
 	${CC} -c $<
 
 clean:
-	rm -f ${SHELL_OBJS} shell test
+	rm -f shell test

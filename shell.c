@@ -50,7 +50,6 @@ prompt:
 
 	// grab child process pid to wait for its completion
 	pid_t child_pid = fork();
-
 	if (child_pid == 0) // child process
 	{
 		// child doesnt read
